@@ -1,28 +1,33 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { 
+  SafeAreaView, 
+  StyleSheet, 
+  useColorScheme,
+} from 'react-native';
 
-const App = () => {
+
+import LandingScreen from './src/screens/LandingScreen';
+
+function App() {
+  const isDarkMode = useColorScheme() === 'dark';
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>CICT Voting System ❤️</Text>
-    </View>
-  )
+    <SafeAreaView style={[styles.root, isDarkMode ? styles.rootDark : styles.rootLight]}>
+      <LandingScreen />
+    </SafeAreaView>
+  );
 }
 
-export default App
-
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#ffffff',
+  root: {
+    backgroundColor: '#fff',
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-
   },
-  text: {
-    fontSize: 30,
-    color: 'red',
-    fontWeight: 'bold'
+  rootDark: {
+    backgroundColor: '#1b1c27',
+  },
+  rootLight: {
+    backgroundColor: '#fff',
+  },
+});
 
-  }
-})
+export default App;

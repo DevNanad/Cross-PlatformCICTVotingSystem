@@ -1,6 +1,6 @@
 import { View, Text, Image, StyleSheet, ScrollView, useColorScheme } from 'react-native';
 import React from 'react';
-import CustomButton from '../../../src/components/CustomButton/CustomButton';
+import CustomButton from '../../../src/components/CustomButton';
 
 const LandingScreen = () => {
   const isDarkMode = useColorScheme() === 'dark';

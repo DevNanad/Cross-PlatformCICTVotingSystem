@@ -6,13 +6,14 @@ import {
 } from 'react-native';
 
 import ChooseLoginScreen from './src/screens/ChooseLoginScreen';
+import ChooseRegisterScreen from './src/screens/ChooseRegisterScreen';
 import LandingScreen from './src/screens/LandingScreen';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <SafeAreaView style={[styles.root, isDarkMode ? styles.rootDark : styles.rootLight]}>
-       <ChooseLoginScreen/>
+       <ChooseRegisterScreen/>
     </SafeAreaView>
   );
 }

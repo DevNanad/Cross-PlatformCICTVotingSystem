@@ -2,14 +2,22 @@ import { View, Text, Image, StyleSheet, ScrollView, useColorScheme } from 'react
 import React from 'react';
 import CustomButton from '../../../src/components/CustomButton';
 
-const LandingScreen = () => {
+//navigation
+import {NativeStackScreenProps} from '@react-navigation/native-stack'
+import { RootStackParamList } from '../../App';
+
+type LandingProps = NativeStackScreenProps<RootStackParamList, 'LandingScreen'>
+
+const LandingScreen = ({navigation}: LandingProps) => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const onLoginInPressed = () => {
-    console.warn('Login');
+    navigation.navigate('ChooseLoginScreen')
+    //console.warn('Login');
   };
   const onRegisterPressed = () => {
-    console.warn('Register');
+    navigation.navigate("IdRegisterScreen")
+    //console.warn('Register');
   };
 
   return (

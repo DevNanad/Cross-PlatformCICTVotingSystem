@@ -1,5 +1,10 @@
-import { TextInputProps, StyleSheet, Text, TextInput, View, useColorScheme } from 'react-native';
-import React from 'react';
+import { TextInputProps, StyleSheet, Text, TextInput, View, useColorScheme, KeyboardTypeOptions } from 'react-native';
+import { Dispatch, SetStateAction } from 'react'
+
+interface MyTextInputProps extends TextInputProps {
+  setValue: Dispatch<SetStateAction<string>>;
+  keyType?:KeyboardTypeOptions;
+}
 
 const CustomInput = ({
   placeholder,
@@ -8,7 +13,7 @@ const CustomInput = ({
   secureTextEntry,
   keyType,
   maxLength,
-}: TextInputProps) => {
+}: MyTextInputProps) => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={[styles.container, isDarkMode ? styles.containerDark : styles.containerLight]}>

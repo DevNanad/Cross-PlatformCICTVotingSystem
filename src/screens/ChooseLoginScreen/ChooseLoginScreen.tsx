@@ -3,14 +3,22 @@ import React from 'react';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import { useColorScheme } from 'react-native';
 
-const ChooseLoginScreen = () => {
+//navigation
+import {NativeStackScreenProps} from '@react-navigation/native-stack'
+import { RootStackParamList } from '../../App';
+
+type ChooseLogProps = NativeStackScreenProps<RootStackParamList, 'LandingScreen'>
+
+const ChooseLoginScreen = ({navigation}: ChooseLogProps) => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const onQrcodePressed = () => {
-    console.warn('QR Code');
+    navigation.navigate("QrLoginScreen")
+    //console.warn('QR Code');
   };
   const onStudentIdPressed = () => {
-    console.warn('Student ID');
+    navigation.navigate("IdLoginScreen")
+    //console.warn('Student ID');
   };
   return (
     <View style={[styles.wrapper, isDarkMode ? styles.wrapperDark : styles.wrapperLight]}>

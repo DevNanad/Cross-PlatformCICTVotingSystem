@@ -9,7 +9,12 @@ const OtpScreen = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const onVerifyPressed = () => {
-    console.warn('Verified OTP ', otp);
+    if(otp.length === 6){
+      console.warn('Verified OTP ', otp);
+    }else{
+      console.warn("Please enter a valid code")
+    }
+    
   };
   const onResendPressed = () => {
     console.warn('OTP Resent');
@@ -81,7 +86,7 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: '#e8e8e8',
     textAlign: 'center',
-    paddingHorizontal: 22,
+    paddingHorizontal: 12,
     paddingVertical: 11,
     borderRadius: 8,
     color: '#1b1c27',

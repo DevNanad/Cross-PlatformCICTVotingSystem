@@ -19,7 +19,7 @@ function App() {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <SafeAreaView style={[styles.root, isDarkMode ? styles.rootDark : styles.rootLight]}>
-       <OtpScreen/>
+       <ResetPasswordScreen/>
     </SafeAreaView>
   );
 }

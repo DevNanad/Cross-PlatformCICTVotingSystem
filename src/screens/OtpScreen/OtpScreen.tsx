@@ -110,6 +110,8 @@ const styles = StyleSheet.create({
     color: '#1b1c27',
     fontWeight: 'bold',
     fontSize: 23,
+    borderWidth: 1,
+    borderColor: 'gray',
   },
   inputDark: {
     backgroundColor: '#31323C',

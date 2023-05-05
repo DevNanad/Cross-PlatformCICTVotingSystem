@@ -26,7 +26,8 @@ const IdLoginScreen = ({navigation}: idLogProps) => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const onIdLoginPressed = () => {
-    console.warn('Login using Id');
+    navigation.navigate("PinLoginScreen");
+    //console.warn('Login using Id');
   };
   const onForgotPasswordPressed = () => {
     navigation.navigate("NumberScreen");

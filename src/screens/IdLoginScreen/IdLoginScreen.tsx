@@ -17,7 +17,7 @@ import CustomButton from '../../components/CustomButton';
 import {NativeStackScreenProps} from '@react-navigation/native-stack'
 import { RootStackParamList } from '../../App';
 
-type idLogProps = NativeStackScreenProps<RootStackParamList, 'LandingScreen'>
+type idLogProps = NativeStackScreenProps<RootStackParamList, 'IdLoginScreen'>
 
 const IdLoginScreen = ({navigation}: idLogProps) => {
   const [id, setId] = useState('');

@@ -17,7 +17,7 @@ import CustomButton from '../../components/CustomButton';
 import {NativeStackScreenProps} from '@react-navigation/native-stack'
 import { RootStackParamList } from '../../App';
 
-type idRegProps = NativeStackScreenProps<RootStackParamList, 'LandingScreen'>
+type idRegProps = NativeStackScreenProps<RootStackParamList, 'IdRegisterScreen'>
 
 
 const IdRegisterScreen = ({navigation}: idRegProps) => {
@@ -32,9 +32,9 @@ const IdRegisterScreen = ({navigation}: idRegProps) => {
     navigation.navigate("ChooseLoginScreen")
     //console.warn('Register using Id');
   };
-  const onForgotPasswordPressed = () => {
-    console.warn('Forgot password');
-  };
+  // const onForgotPasswordPressed = () => {
+  //   console.warn('Forgot password');
+  // };
   const onRegisterPressed = () => {
     navigation.navigate("OtpScreen")
     //console.warn('Login');
@@ -105,9 +105,9 @@ const IdRegisterScreen = ({navigation}: idRegProps) => {
           <CustomButton title="Register" onPress={onRegisterPressed} type={'PRIMARY'} />
 
           <View style={styles.action}>
-            <Text style={styles.actionChoice} onPress={onForgotPasswordPressed}>
+            {/* <Text style={styles.actionChoice} onPress={onForgotPasswordPressed}>
               Forgot Password?
-            </Text>
+            </Text> */}
             <Text style={styles.actionChoice} onPress={onLoginPressed}>
               Login
             </Text>

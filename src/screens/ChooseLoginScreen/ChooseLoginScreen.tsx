@@ -7,7 +7,7 @@ import { useColorScheme } from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack'
 import { RootStackParamList } from '../../App';
 
-type ChooseLogProps = NativeStackScreenProps<RootStackParamList, 'LandingScreen'>
+type ChooseLogProps = NativeStackScreenProps<RootStackParamList, 'ChooseLoginScreen'>
 
 const ChooseLoginScreen = ({navigation}: ChooseLogProps) => {
   const isDarkMode = useColorScheme() === 'dark';

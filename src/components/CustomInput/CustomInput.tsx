@@ -16,7 +16,7 @@ const CustomInput = ({
 }: MyTextInputProps) => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
-    <View style={[styles.container, isDarkMode ? styles.containerDark : styles.containerLight]}>
+    <View style={[styles.container]}>
       <TextInput
         value={value}
         onChangeText={setValue}
@@ -35,27 +35,26 @@ export default CustomInput;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#e8e8e8',
     width: '100%',
-    borderRadius: 8,
 
-    paddingHorizontal: 10,
     marginVertical: 8,
-  },
-  containerDark: {
-    backgroundColor: '#31323C',
-  },
-  containerLight: {
-    backgroundColor: '#e8e8e8',
   },
   input: {
     color: '#1b1c27',
     fontSize: 17,
+    borderWidth: 1,
+    borderColor: "#D1D1D1",
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+
   },
   inputDark: {
     color: 'white',
+    borderColor: "gray"
   },
   inputLight: {
     color: '#1b1c27',
+    borderRadius: 10,
   },
 });

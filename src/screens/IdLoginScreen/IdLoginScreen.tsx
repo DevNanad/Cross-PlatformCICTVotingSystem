@@ -29,14 +29,15 @@ const IdLoginScreen = ({navigation}: idLogProps) => {
     console.warn('Login using Id');
   };
   const onForgotPasswordPressed = () => {
-    console.warn('Forgot password');
+    navigation.navigate("NumberScreen");
+    //console.warn('Forgot password');
   };
   const onRegisterPressed = () => {
     navigation.navigate("IdRegisterScreen")
     //console.warn('Register');
   };
   return (
-    <ScrollView style={styles.root} showsVerticalScrollIndicator={false}>
+    <ScrollView style={[styles.root, isDarkMode ? styles.rootDark : styles.rootLight]} showsVerticalScrollIndicator={false}>
       {/* TCU Background Image */}
       <ImageBackground
         style={styles.ImageBackground}
@@ -93,13 +94,20 @@ export default IdLoginScreen;
 const styles = StyleSheet.create({
   root: {
     flex: 1,
+    backgroundColor: '#E5E0FF'
+  },
+  rootDark: {
+    backgroundColor: '#1b1c27',
+  },
+  rootLight: {
+    backgroundColor: '#E5E0FF',
   },
   ImageBackground: {
     height: Dimensions.get('window').height / 2.5,
   },
   login: {
     flex: 1.5,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#E5E0FF',
     bottom: 50,
     borderTopStartRadius: 60,
     borderTopEndRadius: 60,
@@ -108,7 +116,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#1b1c27',
   },
   loginLight: {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#E5E0FF',
   },
   log: {
     padding: 20,
@@ -134,7 +142,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
   },
   labelDark: {
-    color: '#e1e1e1',
+    color: 'gray',
   },
   labelLight: {
     color: 'gray',
@@ -147,6 +155,7 @@ const styles = StyleSheet.create({
   },
   actionChoice: {
     paddingVertical: 5,
+    fontWeight: '500',
     color: '#0081C9',
     textDecorationLine: 'underline',
   },

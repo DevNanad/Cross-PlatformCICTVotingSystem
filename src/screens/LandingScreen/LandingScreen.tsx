@@ -47,7 +47,7 @@ const LandingScreen = ({navigation}: LandingProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: '#e5e0ff',
     alignItems: 'center',
     padding: 10,
   },
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#1b1c27',
   },
   containerLight: {
-    backgroundColor: '#fff',
+    backgroundColor: '#e5e0ff',
   },
   moto: {
     color: 'gray',
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Helvetica',
   },
   motoDark: {
-    color: '#fff',
+    color: '#e1e1e1',
   },
   motoLight: {
     color: 'gray',

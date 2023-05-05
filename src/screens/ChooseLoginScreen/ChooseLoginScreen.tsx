@@ -45,10 +45,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     paddingHorizontal: 40,
-    backgroundColor: 'white',
+    backgroundColor: '#e5e0ff',
   },
   wrapperLight: {
-    backgroundColor: 'white',
+    backgroundColor: '#e5e0ff',
   },
   wrapperDark: {
     backgroundColor: '#1b1c27',

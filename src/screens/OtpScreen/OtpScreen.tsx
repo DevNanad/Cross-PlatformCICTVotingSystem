@@ -69,7 +69,7 @@ export default OtpScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#e5e0ff',
     paddingHorizontal: 20,
     gap: 10,
   },
@@ -77,14 +77,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#1b1c27',
   },
   containerLight: {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#e5e0ff',
   },
   inputContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
   input: {
-    backgroundColor: '#e8e8e8',
+    backgroundColor: '#D2CEE6',
     textAlign: 'center',
     paddingHorizontal: 12,
     paddingVertical: 11,
@@ -98,11 +98,11 @@ const styles = StyleSheet.create({
     color: '#ffffff',
   },
   inputLight: {
-    backgroundColor: '#e8e8e8',
+    backgroundColor: '#D2CEE6',
     color: '#1b1c27',
   },
   codeLabel: {
-    color: 'gray',
+    color: '#3F3D56',
     fontSize: 16,
     paddingVertical: 5,
     marginTop: 20,
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     color: '#0081C9',
   },
   inputResend: {
-    color: 'lightblue',
+    color: '#4C7CE5',
     fontSize: 16,
     padding: 6,
     textAlign: 'right',

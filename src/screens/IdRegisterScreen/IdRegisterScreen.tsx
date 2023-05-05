@@ -40,7 +40,7 @@ const IdRegisterScreen = ({navigation}: idRegProps) => {
     //console.warn('Login');
   };
   return (
-    <ScrollView style={styles.root} showsVerticalScrollIndicator={false}>
+    <ScrollView style={[styles.root, isDarkMode ? styles.rootDark : styles.rootLight]} showsVerticalScrollIndicator={false}>
       {/* TCU Background Image */}
       <ImageBackground
         style={styles.ImageBackground}
@@ -124,13 +124,20 @@ export default IdRegisterScreen;
 const styles = StyleSheet.create({
   root: {
     flex: 1,
+    backgroundColor: '#e5e0ff'
+  },
+  rootDark: {
+    backgroundColor: '#1b1c27',
+  },
+  rootLight: {
+    backgroundColor: '#e5e0ff',
   },
   ImageBackground: {
     height: Dimensions.get('window').height / 2.5,
   },
   login: {
     flex: 1.5,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#e5e0ff',
     bottom: 50,
     borderTopStartRadius: 60,
     borderTopEndRadius: 60,
@@ -139,7 +146,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#1b1c27',
   },
   loginLight: {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#e5e0ff',
   },
   log: {
     padding: 20,
@@ -165,7 +172,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
   },
   labelDark: {
-    color: '#e1e1e1',
+    color: 'gray',
   },
   labelLight: {
     color: 'gray',
@@ -174,11 +181,12 @@ const styles = StyleSheet.create({
   action: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
   },
   actionChoice: {
     paddingVertical: 5,
     color: '#0081C9',
+    fontWeight: "500",
     textDecorationLine: 'underline',
   },
 });

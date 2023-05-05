@@ -20,7 +20,8 @@ const OtpScreen = ({route}: OTPProps) => {
   const onVerifyPressed = () => {
     if(otp.length === 6){
       if(where === "register"){
-        console.warn("Registered")
+        navigation.navigate("PinCreateScreen")
+        //console.warn("Registered")
       }else if (where === "resetpassword"){
         navigation.navigate("ResetPasswordScreen")
       }else{

@@ -15,6 +15,7 @@ import QrLoginScreen from './screens/QrLoginScreen';
 import QrRegisterScreen from './screens/QrRegisterScreen';
 import ResetPasswordScreen from './screens/ResetPasswordScreen';
 import { useColorScheme } from 'react-native';
+import NumberScreen from './screens/NumberScreen';
 
 export type RootStackParamList = {
   LandingScreen: undefined;
@@ -25,7 +26,9 @@ export type RootStackParamList = {
   QrLoginScreen: undefined;
   QrRegisterScreen: undefined;
   ResetPasswordScreen: undefined;
+  NumberScreen: undefined;
 };
+
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
@@ -50,7 +53,7 @@ function App() {
         />
 
         <Stack.Screen 
-        name='ChooseLoginScreen'
+        name="ChooseLoginScreen"
         component={ChooseLoginScreen}
         options={{
           title: '',
@@ -58,6 +61,7 @@ function App() {
           headerTintColor: headerTintColor
         }}
         />
+        
         <Stack.Screen 
         name='IdLoginScreen'
         component={IdLoginScreen}
@@ -67,6 +71,7 @@ function App() {
           headerTintColor: headerTintColor
         }}
         />
+
         <Stack.Screen 
         name='IdRegisterScreen'
         component={IdRegisterScreen}
@@ -108,6 +113,15 @@ function App() {
         <Stack.Screen 
         name='ResetPasswordScreen'
         component={ResetPasswordScreen}
+        options={{
+          title: '',
+          headerTransparent: true,
+          headerTintColor: headerTintColor
+        }}
+        />
+        <Stack.Screen 
+        name='NumberScreen'
+        component={NumberScreen}
         options={{
           title: '',
           headerTransparent: true,

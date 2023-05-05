@@ -42,8 +42,8 @@ const styles = StyleSheet.create({
   input: {
     color: '#1b1c27',
     fontSize: 17,
-    borderWidth: 1,
-    borderColor: "#D1D1D1",
+    borderWidth: 2,
+    borderColor: "red",
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 10,
@@ -56,5 +56,6 @@ const styles = StyleSheet.create({
   inputLight: {
     color: '#1b1c27',
     borderRadius: 10,
+    borderColor: "gray"
   },
 });

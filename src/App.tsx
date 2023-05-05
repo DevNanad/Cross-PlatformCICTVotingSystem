@@ -17,6 +17,7 @@ import ResetPasswordScreen from './screens/ResetPasswordScreen';
 import { useColorScheme } from 'react-native';
 import NumberScreen from './screens/NumberScreen';
 import PinCreateScreen from './screens/PinCreateScreen';
+import PinLoginScreen from './screens/PinLoginScreen';
 
 export type RootStackParamList = {
   LandingScreen: undefined;
@@ -29,6 +30,7 @@ export type RootStackParamList = {
   ResetPasswordScreen: undefined;
   NumberScreen: undefined;
   PinCreateScreen: undefined;
+  PinLoginScreen: undefined;
 };
 
 
@@ -133,6 +135,15 @@ function App() {
         <Stack.Screen 
         name='PinCreateScreen'
         component={PinCreateScreen}
+        options={{
+          title: '',
+          headerTransparent: true,
+          headerTintColor: headerTintColor
+        }}
+        />
+        <Stack.Screen 
+        name='PinLoginScreen'
+        component={PinLoginScreen}
         options={{
           title: '',
           headerTransparent: true,

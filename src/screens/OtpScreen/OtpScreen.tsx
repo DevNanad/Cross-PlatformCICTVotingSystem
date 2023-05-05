@@ -2,18 +2,35 @@ import { Image, ScrollView, StyleSheet, Text, useColorScheme, View } from 'react
 import React, { useState } from 'react';
 import OtpInputs from 'react-native-otp-inputs';
 import CustomButton from '../../components/CustomButton';
+//navigation
+import {NativeStackScreenProps, NativeStackNavigationProp} from '@react-navigation/native-stack'
+import { RootStackParamList } from '../../App';
+import {useNavigation} from '@react-navigation/native'
+type OTPProps = NativeStackScreenProps<RootStackParamList, 'OtpScreen'>
 
-const OtpScreen = () => {
+
+const OtpScreen = ({route}: OTPProps) => {
   const [otp, setOtp] = useState('');
 
   const isDarkMode = useColorScheme() === 'dark';
+  const { where } = route.params
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
+
 
   const onVerifyPressed = () => {
     if(otp.length === 6){
-      console.warn('Verified OTP ', otp);
+      if(where === "register"){
+        console.warn("Registered")
+      }else if (where === "resetpassword"){
+        navigation.navigate("ResetPasswordScreen")
+      }else{
+        //console.warn('Verified OTP ', otp);
+      }
     }else{
       console.warn("Please enter a valid code")
     }
+
+
     
   };
   const onResendPressed = () => {

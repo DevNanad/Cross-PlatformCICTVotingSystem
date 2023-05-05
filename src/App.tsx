@@ -22,7 +22,7 @@ export type RootStackParamList = {
   ChooseLoginScreen: undefined;
   IdLoginScreen: undefined;
   IdRegisterScreen: undefined;
-  OtpScreen: undefined;
+  OtpScreen: { where: string};
   QrLoginScreen: undefined;
   QrRegisterScreen: undefined;
   ResetPasswordScreen: undefined;

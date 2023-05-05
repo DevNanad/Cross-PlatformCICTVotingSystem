@@ -4,14 +4,21 @@ import CustomButton from '../../components/CustomButton';
 import CustomInput from '../../components/CustomInput/CustomInput';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
+//navigation
+import {NativeStackScreenProps} from '@react-navigation/native-stack'
+import { RootStackParamList } from '../../App';
 
-const NumberScreen = () => {
+type NumberProps = NativeStackScreenProps<RootStackParamList, 'NumberScreen'>
+
+
+const NumberScreen = ({navigation}: NumberProps) => {
   const [number, setNumber] = useState('');
 
   const isDarkMode = useColorScheme() === 'dark';
 
   const onSubmitPressed = () => {
-    console.warn('Number', number);
+    navigation.navigate("OtpScreen", {where: "resetpassword"})
+    //console.warn('Number', number);
   };
 
   return (

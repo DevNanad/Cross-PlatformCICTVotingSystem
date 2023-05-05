@@ -1,16 +1,22 @@
 import { Image, ScrollView, StyleSheet, Text, TextInput, useColorScheme, View } from 'react-native';
 import React, { useState } from 'react';
 import CustomButton from '../../components/CustomButton';
-import CustomInput from '../../components/CustomInput';
 
-const ResetPasswordScreen = () => {
+//navigation
+import {NativeStackScreenProps} from '@react-navigation/native-stack'
+import { RootStackParamList } from '../../App';
+type resetPasswordProps = NativeStackScreenProps<RootStackParamList, 'ResetPasswordScreen'>
+
+
+const ResetPasswordScreen = ({navigation}: resetPasswordProps) => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
 
   const isDarkMode = useColorScheme() === 'dark';
 
   const onConfirmPressed = () => {
-    console.warn('Password confirmed', newPassword, confirmNewPassword);
+    navigation.pop(3)
+    //console.warn('Password confirmed', newPassword, confirmNewPassword);
   };
 
   return (

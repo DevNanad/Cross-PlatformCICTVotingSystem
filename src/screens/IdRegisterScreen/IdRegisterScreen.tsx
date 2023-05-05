@@ -36,7 +36,7 @@ const IdRegisterScreen = ({navigation}: idRegProps) => {
   //   console.warn('Forgot password');
   // };
   const onRegisterPressed = () => {
-    navigation.navigate("OtpScreen")
+    navigation.navigate("OtpScreen", {where: "register"})
     //console.warn('Login');
   };
   return (

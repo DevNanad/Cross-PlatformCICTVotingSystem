@@ -27,10 +27,10 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   bg_PRIMARY: {
-    backgroundColor: '#0081C9',
+    backgroundColor: '#4C7CE5',
   },
   bg_SECONDARY: {
-    backgroundColor: '#ECF9FF',
+    backgroundColor: '#BDCDD6',
   },
   text_PRIMARY: {
     color: '#fff',
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
   },
   text_SECONDARY: {
-    color: '#0081C9',
+    color: '#3F3D56',
     fontSize: 16,
     fontWeight: '700',
   },

@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
   loginText: {
     fontSize: 30,
     fontWeight: '800',
-    color: '#1b1c27',
+    color: '#4C7CE5',
     textAlign: 'center',
     letterSpacing: 5,
   },
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
     color: '#ffffff',
   },
   loginTextLight: {
-    color: '#1b1c27',
+    color: '#4C7CE5',
   },
   inputForm: {
     paddingHorizontal: 20,
@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
   },
   actionChoice: {
     paddingVertical: 5,
-    color: '#0081C9',
+    color: '#5E5E5E',
     fontWeight: "500",
     textDecorationLine: 'underline',
   },

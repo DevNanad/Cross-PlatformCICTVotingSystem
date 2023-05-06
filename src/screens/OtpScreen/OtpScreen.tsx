@@ -20,10 +20,11 @@ const OtpScreen = ({route}: OTPProps) => {
   const onVerifyPressed = () => {
     if(otp.length === 6){
       if(where === "register"){
-        navigation.navigate("PinCreateScreen")
+        navigation.replace("PinCreateScreen")
         //console.warn("Registered")
       }else if (where === "resetpassword"){
-        navigation.navigate("ResetPasswordScreen")
+        navigation.pop(1)
+        navigation.replace("ResetPasswordScreen")
       }else{
         //console.warn('Verified OTP ', otp);
       }
@@ -122,13 +123,13 @@ const styles = StyleSheet.create({
     color: '#1b1c27',
   },
   codeLabel: {
-    color: '#3F3D56',
+    color: '#5E5E5E',
     fontSize: 16,
     paddingVertical: 5,
     marginTop: 20,
   },
   codeHeading: {
-    color: '#0081C9',
+    color: '#4C7CE5',
     fontSize: 25,
     fontWeight: 'bold',
     textAlign: 'center',
@@ -137,7 +138,7 @@ const styles = StyleSheet.create({
     color: '#ffffff',
   },
   codeHeadingLight: {
-    color: '#0081C9',
+    color: '#4C7CE5',
   },
   inputResend: {
     color: '#4C7CE5',

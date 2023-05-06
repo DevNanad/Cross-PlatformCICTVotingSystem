@@ -6,13 +6,20 @@ import QRCodeScanner from 'react-native-qrcode-scanner';
 import { RNCamera } from 'react-native-camera';
 import CustomButton from '../../components/CustomButton';
 
-const QrLoginScreen = () => {
+//navigation
+import {NativeStackScreenProps} from '@react-navigation/native-stack'
+import { RootStackParamList } from '../../App';
+
+type qrLogProps = NativeStackScreenProps<RootStackParamList, 'QrLoginScreen'>
+
+const QrLoginScreen = ({navigation}: qrLogProps) => {
   const [on, setOn] = useState(false);
 
   const ScreenHeight = Dimensions.get('window').height;
 
-  const onSuccess = (e) => {
+  const onSuccess = (e:any) => {
     Alert.alert(e.data);
+    //navigation.replace("PinLoginScreen")
     // Linking.openURL(e.data).catch((err) => console.error('An error occured', err));
   };
 

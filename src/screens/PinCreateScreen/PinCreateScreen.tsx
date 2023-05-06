@@ -90,16 +90,16 @@ const styles = StyleSheet.create({
     gap: 2
   },
   codeHeading: {
-    color: '#1b1c27',
+    color: '#3F3D56',
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: '500',
     textAlign: 'left',
   },
   codeHeadingDark: {
     color: '#ffffff',
   },
   codeHeadingLight: {
-    color: '#1b1c27',
+    color: '#3F3D56',
   },
   heading: {
     color: '#4C7CE5',

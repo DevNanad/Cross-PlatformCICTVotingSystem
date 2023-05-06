@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#e5e0ff',
   },
   moto: {
-    color: 'gray',
+    color: '#3F3D56',
     fontWeight: '400',
     fontFamily: 'Helvetica',
   },
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     color: '#e1e1e1',
   },
   motoLight: {
-    color: 'gray',
+    color: '#3F3D56',
   },
   greetings: {
     marginVertical: 10,

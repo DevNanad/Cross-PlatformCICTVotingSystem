@@ -49,7 +49,7 @@ const NumberScreen = ({navigation}: NumberProps) => {
             />
           </View>
 
-          <CustomButton title="Submit" onPress={onSubmitPressed} type={'PRIMARY'} />
+          <CustomButton title="Next" onPress={onSubmitPressed} type={'PRIMARY'} />
         </View>
       </ScrollView>
   )
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#E5E0FF',
   },
   inputLabel: {
-    color: '#5e5e5e',
+    color: '#5E5E5E',
     fontWeight: "600"
   },
   inputContainer: {

@@ -19,6 +19,8 @@ const QrLoginScreen = ({navigation}: qrLogProps) => {
 
   const onSuccess = (e:any) => {
     Alert.alert(e.data);
+    navigation.popToTop()
+    navigation.replace("MyDrawer")
     //navigation.replace("PinLoginScreen")
     // Linking.openURL(e.data).catch((err) => console.error('An error occured', err));
   };

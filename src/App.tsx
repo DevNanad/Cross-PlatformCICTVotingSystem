@@ -1,12 +1,14 @@
-import React from 'react';
+
 
 //Navigation imports
 import {NavigationContainer} from '@react-navigation/native'
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
+import { createDrawerNavigator } from '@react-navigation/drawer';
+
+
 
 
 import ChooseLoginScreen from './screens/ChooseLoginScreen';
-import ChooseRegisterScreen from './screens/ChooseRegisterScreen';
 import IdLoginScreen from './screens/IdLoginScreen';
 import IdRegisterScreen from './screens/IdRegisterScreen';
 import LandingScreen from './screens/LandingScreen';
@@ -18,6 +20,13 @@ import { useColorScheme } from 'react-native';
 import NumberScreen from './screens/NumberScreen';
 import PinCreateScreen from './screens/PinCreateScreen';
 import PinLoginScreen from './screens/PinLoginScreen';
+import DashboardScreen from './screens/DashboardScreen';
+import CastVoteScreen from './screens/CastVoteScreen';
+import ElectionHistoryScreen from './screens/ElectionHistoryScreen';
+import DevelopersScreen from './screens/DevelopersScreen';
+import PrivacyPolicyScreen from './screens/PrivacyPolicyScreen';
+import SettingsScreen from './screens/SettingsScreen';
+
 
 export type RootStackParamList = {
   LandingScreen: undefined;
@@ -31,12 +40,77 @@ export type RootStackParamList = {
   NumberScreen: undefined;
   PinCreateScreen: undefined;
   PinLoginScreen: undefined;
+  MyDrawer: undefined;
 };
 
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
+const Drawer = createDrawerNavigator();
 
-function App() {
+function MyDrawer (){
+  return (
+    <Drawer.Navigator initialRouteName='DashboarScreen'>
+      <Drawer.Screen 
+      name="Home" 
+      component={DashboardScreen}
+      options={{
+        title: 'Home',
+        headerTransparent: true,
+        headerTintColor: '#4C7CE5',
+        headerTitleAlign: 'center',
+      }} />
+      <Drawer.Screen 
+      name="Cast Vote" 
+      component={CastVoteScreen}
+      options={{
+        title: 'Cast Vote',
+        headerTransparent: true,
+        headerTintColor: '#4C7CE5',
+        headerTitleAlign: 'center',
+      }} />
+      <Drawer.Screen 
+      name="Election History" 
+      component={ElectionHistoryScreen}
+      options={{
+        title: 'Election History',
+        headerTransparent: true,
+        headerTintColor: '#4C7CE5',
+        headerTitleAlign: 'center',
+      }} />
+      <Drawer.Screen 
+      name="Developers" 
+      component={DevelopersScreen}
+      options={{
+        title: 'Developers',
+        headerTransparent: true,
+        headerTintColor: '#4C7CE5',
+        headerTitleAlign: 'center',
+      }} />
+      <Drawer.Screen 
+      name="Privacy Policy" 
+      component={PrivacyPolicyScreen}
+      options={{
+        title: 'Privacy Policy',
+        headerTransparent: true,
+        headerTintColor: '#4C7CE5',
+        headerTitleAlign: 'center',
+      }} />
+      <Drawer.Screen 
+      name="Settings" 
+      component={SettingsScreen}
+      options={{
+        title: 'Setings',
+        headerTransparent: true,
+        headerTintColor: '#4C7CE5',
+        headerTitleAlign: 'center',
+      }} />
+    </Drawer.Navigator>
+  );
+}
+
+
+
+function App () {
 
   const colorScheme = useColorScheme();
 
@@ -151,8 +225,18 @@ function App() {
         }}
         />
 
+        <Stack.Screen 
+        name="MyDrawer" 
+        component={MyDrawer} 
+        options={{
+          title: '',
+          headerTransparent: true,
+          headerTintColor: headerTintColor
+        }} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-export default App;
+
+export default App

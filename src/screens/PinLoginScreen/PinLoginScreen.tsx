@@ -1,8 +1,14 @@
 import { Alert, Image, ScrollView, StyleSheet, Text, useColorScheme, View } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import OtpInputs from 'react-native-otp-inputs';
+//navigation
+import {NativeStackScreenProps} from '@react-navigation/native-stack'
+import { RootStackParamList } from '../../App';
 
-const PinLoginScreen = () => {
+type PinLogProps = NativeStackScreenProps<RootStackParamList, 'PinLoginScreen'>
+
+
+const PinLoginScreen = ({navigation}: PinLogProps) => {
   const [tries, setTries] = useState(0);
   const [timeRemaining, setTimeRemaining] = useState(0);
 
@@ -18,7 +24,9 @@ const PinLoginScreen = () => {
     //   }
 
       if (code === pin.toString()) {
-        console.warn('Pin is correct');
+        navigation.popToTop()
+        navigation.replace("MyDrawer")
+        //console.warn('Pin is correct');
       } else {
         console.warn('Invalid pin');
         setTries(tries + 1);

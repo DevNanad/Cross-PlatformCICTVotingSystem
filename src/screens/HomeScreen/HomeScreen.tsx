@@ -2,14 +2,14 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import 'react-native-gesture-handler';
 
-const DashboardScreen = () => {
+const HomeScreen = () => {
   return (
     <View>
-      <Text>DashboardScreen</Text>
+      <Text>HomeScreen</Text>
     </View>
   )
 }
 
-export default DashboardScreen
+export default HomeScreen
 
 const styles = StyleSheet.create({})

@@ -6,7 +6,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 //navigation
 import {NativeStackScreenProps} from '@react-navigation/native-stack'
-import { RootStackParamList } from '../../App';
+import { RootStackParamList } from '../../routes/AuthStack';
 
 type NumberProps = NativeStackScreenProps<RootStackParamList, 'NumberScreen'>
 

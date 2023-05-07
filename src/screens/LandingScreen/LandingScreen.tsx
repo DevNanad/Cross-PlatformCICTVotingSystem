@@ -4,7 +4,7 @@ import CustomButton from '../../../src/components/CustomButton';
 
 //navigation
 import {NativeStackScreenProps} from '@react-navigation/native-stack'
-import { RootStackParamList } from '../../App';
+import { RootStackParamList } from '../../routes/AuthStack';
 
 type LandingProps = NativeStackScreenProps<RootStackParamList, 'LandingScreen'>
 

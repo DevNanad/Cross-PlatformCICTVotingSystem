@@ -15,7 +15,7 @@ import CustomButton from '../../components/CustomButton';
 
 //navigation
 import {NativeStackScreenProps} from '@react-navigation/native-stack'
-import { RootStackParamList } from '../../App';
+import { RootStackParamList } from '../../routes/AuthStack';
 
 type idRegProps = NativeStackScreenProps<RootStackParamList, 'IdRegisterScreen'>
 

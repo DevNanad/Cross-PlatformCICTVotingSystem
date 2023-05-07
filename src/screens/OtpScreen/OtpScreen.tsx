@@ -4,7 +4,7 @@ import OtpInputs from 'react-native-otp-inputs';
 import CustomButton from '../../components/CustomButton';
 //navigation
 import {NativeStackScreenProps, NativeStackNavigationProp} from '@react-navigation/native-stack'
-import { RootStackParamList } from '../../App';
+import { RootStackParamList } from '../../routes/AuthStack';
 import {useNavigation} from '@react-navigation/native'
 type OTPProps = NativeStackScreenProps<RootStackParamList, 'OtpScreen'>
 

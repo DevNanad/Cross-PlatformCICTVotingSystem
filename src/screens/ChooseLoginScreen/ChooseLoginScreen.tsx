@@ -5,7 +5,7 @@ import { useColorScheme } from 'react-native';
 
 //navigation
 import {NativeStackScreenProps} from '@react-navigation/native-stack'
-import { RootStackParamList } from '../../App';
+import { RootStackParamList } from '../../routes/AuthStack';
 
 type ChooseLogProps = NativeStackScreenProps<RootStackParamList, 'ChooseLoginScreen'>
 

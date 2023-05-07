@@ -8,7 +8,7 @@ import CustomButton from '../../components/CustomButton';
 
 //navigation
 import {NativeStackScreenProps} from '@react-navigation/native-stack'
-import { RootStackParamList } from '../../App';
+import { RootStackParamList } from '../../routes/AuthStack';
 
 type qrLogProps = NativeStackScreenProps<RootStackParamList, 'QrLoginScreen'>
 
@@ -20,7 +20,7 @@ const QrLoginScreen = ({navigation}: qrLogProps) => {
   const onSuccess = (e:any) => {
     Alert.alert(e.data);
     navigation.popToTop()
-    navigation.replace("MyDrawer")
+    //navigation.replace("MyDrawer")
     //navigation.replace("PinLoginScreen")
     // Linking.openURL(e.data).catch((err) => console.error('An error occured', err));
   };

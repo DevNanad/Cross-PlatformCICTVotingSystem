@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import OtpInputs from 'react-native-otp-inputs';
 //navigation
 import {NativeStackScreenProps} from '@react-navigation/native-stack'
-import { RootStackParamList } from '../../App';
+import { RootStackParamList } from '../../routes/AuthStack';
+import { useAuthStore } from '../../store/AuthStore';
 
 type PinLogProps = NativeStackScreenProps<RootStackParamList, 'PinLoginScreen'>
 
@@ -11,6 +12,7 @@ type PinLogProps = NativeStackScreenProps<RootStackParamList, 'PinLoginScreen'>
 const PinLoginScreen = ({navigation}: PinLogProps) => {
   const [tries, setTries] = useState(0);
   const [timeRemaining, setTimeRemaining] = useState(0);
+  const { authData, setIsLoggedIn } = useAuthStore((state) => state)
 
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -23,9 +25,10 @@ const PinLoginScreen = ({navigation}: PinLogProps) => {
     //     return;
     //   }
 
-      if (code === pin.toString()) {
-        navigation.popToTop()
-        navigation.replace("MyDrawer")
+      if (code === authData?.pin) {
+        setIsLoggedIn(true)
+        //navigation.popToTop()
+        //navigation.replace("MyDrawer")
         //console.warn('Pin is correct');
       } else {
         console.warn('Invalid pin');

@@ -15,17 +15,20 @@ import CustomButton from '../../components/CustomButton';
 
 //navigation
 import {NativeStackScreenProps} from '@react-navigation/native-stack'
-import { RootStackParamList } from '../../App';
+import { RootStackParamList } from '../../routes/AuthStack';
+import { useAuthStore } from '../../store/AuthStore';
 
 type idLogProps = NativeStackScreenProps<RootStackParamList, 'IdLoginScreen'>
 
 const IdLoginScreen = ({navigation}: idLogProps) => {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
+  const { logIn } = useAuthStore((state)=> state) 
 
   const isDarkMode = useColorScheme() === 'dark';
 
   const onIdLoginPressed = () => {
+    logIn(id, password)
     navigation.navigate("PinLoginScreen");
     //console.warn('Login using Id');
   };

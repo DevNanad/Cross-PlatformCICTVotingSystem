@@ -8,7 +8,7 @@ import {
     View,
   } from 'react-native';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
@@ -23,14 +23,18 @@ type idLogProps = NativeStackScreenProps<RootStackParamList, 'IdLoginScreen'>
 const IdLoginScreen = ({navigation}: idLogProps) => {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
-  const { logIn } = useAuthStore((state)=> state) 
+  const { logIn, authData, loginError } = useAuthStore((state)=> state) 
 
   const isDarkMode = useColorScheme() === 'dark';
 
+  useEffect(() => {
+    if(authData != undefined){
+      navigation.navigate("PinLoginScreen");
+    }
+  }, [authData])
+
   const onIdLoginPressed = () => {
     logIn(id, password)
-    navigation.navigate("PinLoginScreen");
-    //console.warn('Login using Id');
   };
   const onForgotPasswordPressed = () => {
     navigation.navigate("NumberScreen");
@@ -76,6 +80,7 @@ const IdLoginScreen = ({navigation}: idLogProps) => {
             secureTextEntry
           />
 
+          {loginError ? (<Text style={styles.errorMessage}>{loginError}</Text>) : ""}
           <CustomButton title="Login" onPress={onIdLoginPressed} type={'PRIMARY'} />
 
           <View style={styles.action}>
@@ -163,4 +168,8 @@ const styles = StyleSheet.create({
     color: '#5E5E5E',
     textDecorationLine: 'underline',
   },
+  errorMessage: {
+    color: '#ED4337',
+    textAlign: 'center'
+  }
 });

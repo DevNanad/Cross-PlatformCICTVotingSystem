@@ -2,7 +2,7 @@ import { TextInputProps, StyleSheet, Text, TextInput, View, useColorScheme, Keyb
 import { Dispatch, SetStateAction } from 'react'
 
 interface MyTextInputProps extends TextInputProps {
-  setValue: Dispatch<SetStateAction<string>>;
+  setValue?: Dispatch<string>;
   keyType?:KeyboardTypeOptions;
 }
 

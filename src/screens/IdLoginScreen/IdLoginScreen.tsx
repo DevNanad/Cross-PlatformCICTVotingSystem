@@ -7,11 +7,22 @@ import {
     useColorScheme,
     View,
   } from 'react-native';
-
-import React, { useEffect, useState } from 'react';
-
+  
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
+import React, { useEffect, useState } from 'react';
+import * as Yup from 'yup';
+import { Formik } from 'formik';
+
+//Login Validation
+const loginSchema = Yup.object().shape({
+  voterId: Yup.number()
+  .min(1000000, "ID should be 7 digits")
+  .max(9999999, "ID should be 7 digits")
+  .required("ID is required"),
+  voterPassword: Yup.string()
+  .required("Password is required")
+})
 
 //navigation
 import {NativeStackScreenProps} from '@react-navigation/native-stack'
@@ -21,8 +32,6 @@ import { useAuthStore } from '../../store/AuthStore';
 type idLogProps = NativeStackScreenProps<RootStackParamList, 'IdLoginScreen'>
 
 const IdLoginScreen = ({navigation}: idLogProps) => {
-  const [id, setId] = useState('');
-  const [password, setPassword] = useState('');
   const { logIn, authData, loginError } = useAuthStore((state)=> state) 
 
   const isDarkMode = useColorScheme() === 'dark';
@@ -30,14 +39,9 @@ const IdLoginScreen = ({navigation}: idLogProps) => {
   useEffect(() => {
     if(authData != undefined){
       navigation.navigate("PinLoginScreen");
-      setId("")
-      setPassword("")
     }
   }, [authData])
 
-  const onIdLoginPressed = async () => {
-    await logIn(id, password)
-  };
   const onForgotPasswordPressed = () => {
     navigation.navigate("NumberScreen");
     //console.warn('Forgot password');
@@ -48,55 +52,83 @@ const IdLoginScreen = ({navigation}: idLogProps) => {
   };
   return (
     <ScrollView style={[styles.root, isDarkMode ? styles.rootDark : styles.rootLight]} showsVerticalScrollIndicator={false}>
-      {/* TCU Background Image */}
-      <ImageBackground
-        style={styles.ImageBackground}
-        source={require('../../../assets/images/bg.png')}
-      ></ImageBackground>
-      {/* end Background Image */}
-
-      <View style={[styles.login, isDarkMode ? styles.loginDark : styles.loginLight]}>
-        {/* Login Heading start*/}
-        <View style={styles.log}>
-          <Text
-            style={[styles.loginText, isDarkMode ? styles.loginTextDark : styles.loginTextLight]}
-          >
-            Login
-          </Text>
-        </View>
-        {/* TCU Background Image */}
-
-        {/* Login Form */}
-        <View style={styles.inputForm}>
-          <Text style={[styles.label, isDarkMode ? styles.labelDark : styles.labelLight]}>
-            Student ID (Required)
-          </Text>
-          <CustomInput placeholder="ex. 0123456" value={id} setValue={setId} keyType="numeric" maxLength={7} />
-          <Text style={[styles.label, isDarkMode ? styles.labelDark : styles.labelLight]}>
-            Password (Required)
-          </Text>
-          <CustomInput
-            placeholder="* * * * * *"
-            value={password}
-            setValue={setPassword}
-            secureTextEntry
-          />
-
-          {loginError ? (<Text style={styles.errorMessage}>{loginError}</Text>) : ""}
-          <CustomButton title="Login" onPress={onIdLoginPressed} type={'PRIMARY'} />
-
-          <View style={styles.action}>
-            <Text style={styles.actionChoice} onPress={onForgotPasswordPressed}>
-              Forgot Password?
-            </Text>
-            <Text style={styles.actionChoice} onPress={onRegisterPressed}>
-              Register
-            </Text>
-          </View>
-        </View>
-        {/* end Login Form */}
+    <ImageBackground
+      style={styles.ImageBackground}
+      source={require('../../../assets/images/bg.png')}
+    ></ImageBackground>
+    <View style={[styles.login, isDarkMode ? styles.loginDark : styles.loginLight]}>
+      <View style={styles.log}>
+        <Text style={[styles.loginText, isDarkMode ? styles.loginTextDark : styles.loginTextLight]}>
+          Login
+        </Text>
       </View>
-    </ScrollView>
+      <Formik
+        initialValues={{ voterId: '', voterPassword: '' }}
+        validationSchema={loginSchema}
+        onSubmit={ async (values, { setSubmitting }) => {
+          await logIn(values.voterId, values.voterPassword);
+          setSubmitting(false);
+        }}
+      >
+        {({
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          values,
+          errors,
+          touched,
+          isSubmitting,
+        }) => (
+          <View style={styles.inputForm}>
+            <Text style={[styles.label, isDarkMode ? styles.labelDark : styles.labelLight]}>
+              Student ID (Required)
+            </Text>
+            <CustomInput
+              placeholder="ex. 0123456"
+              value={values.voterId}
+              setValue={handleChange('voterId')}
+              onBlur={handleBlur('voterId')}
+              keyType="numeric"
+              maxLength={7}
+            />
+            {touched.voterId && errors.voterId ? (
+              <Text style={styles.errorMessage}>{errors.voterId}</Text>
+            ) : null}
+            <Text style={[styles.label, isDarkMode ? styles.labelDark : styles.labelLight]}>
+              Password (Required)
+            </Text>
+            <CustomInput
+              placeholder="* * * * * *"
+              value={values.voterPassword}
+              setValue={handleChange('voterPassword')}
+              onBlur={handleBlur('voterPassword')}
+              secureTextEntry
+            />
+            {touched.voterPassword && errors.voterPassword ? (
+              <Text style={styles.errorMessage}>{errors.voterPassword}</Text>
+            ) : null}
+            {loginError ? (
+              <Text style={styles.errorMessage}>{loginError}</Text>
+            ) : null}
+            <CustomButton
+              title="Login"
+              onPress={handleSubmit}
+              disabled={isSubmitting}
+              type={'PRIMARY'}
+            />
+            <View style={styles.action}>
+              <Text style={styles.actionChoice} onPress={onForgotPasswordPressed}>
+                Forgot Password?
+              </Text>
+              <Text style={styles.actionChoice} onPress={onRegisterPressed}>
+                Register
+              </Text>
+            </View>
+          </View>
+        )}
+      </Formik>
+    </View>
+  </ScrollView>
   );
 };
 

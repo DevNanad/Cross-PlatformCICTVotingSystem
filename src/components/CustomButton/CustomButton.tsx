@@ -1,5 +1,6 @@
-import { Text, StyleSheet, Pressable, GestureResponderEvent } from 'react-native';
+import { Text, StyleSheet, Pressable, GestureResponderEvent, ActivityIndicator } from 'react-native';
 import React from 'react';
+import { useAuthStore } from '../../store/AuthStore';
 
 type Props = {
   onPress: (event: GestureResponderEvent) => void;
@@ -10,10 +11,11 @@ type Props = {
 const CustomButton = ({ onPress, title, type = 'PRIMARY' }: Props) => {
     const btnStyle = type === "PRIMARY" ? "bg_PRIMARY" : "bg_SECONDARY";
     const titleStyle = type === "PRIMARY" ? "text_PRIMARY" : "text_SECONDARY";
+    const loading = useAuthStore((state) => state.loading)
     
   return (
     <Pressable onPress={onPress} style={[styles.container, styles[`${btnStyle}`]]}>
-      <Text style={styles[`${titleStyle}`]}>{title}</Text>
+      <Text style={styles[`${titleStyle}`]}>{loading ? (<ActivityIndicator size={23} color="#ffffff" />) : title}</Text>
     </Pressable>
   );
 };

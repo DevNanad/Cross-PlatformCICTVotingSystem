@@ -30,11 +30,13 @@ const IdLoginScreen = ({navigation}: idLogProps) => {
   useEffect(() => {
     if(authData != undefined){
       navigation.navigate("PinLoginScreen");
+      setId("")
+      setPassword("")
     }
   }, [authData])
 
-  const onIdLoginPressed = () => {
-    logIn(id, password)
+  const onIdLoginPressed = async () => {
+    await logIn(id, password)
   };
   const onForgotPasswordPressed = () => {
     navigation.navigate("NumberScreen");
@@ -67,11 +69,11 @@ const IdLoginScreen = ({navigation}: idLogProps) => {
         {/* Login Form */}
         <View style={styles.inputForm}>
           <Text style={[styles.label, isDarkMode ? styles.labelDark : styles.labelLight]}>
-            Student ID
+            Student ID (Required)
           </Text>
           <CustomInput placeholder="ex. 0123456" value={id} setValue={setId} keyType="numeric" maxLength={7} />
           <Text style={[styles.label, isDarkMode ? styles.labelDark : styles.labelLight]}>
-            Password
+            Password (Required)
           </Text>
           <CustomInput
             placeholder="* * * * * *"

@@ -1,4 +1,4 @@
-import { Alert, Image, ScrollView, StyleSheet, Platform, Text, useColorScheme, View, StatusBar } from 'react-native';
+import { Alert, Image, ScrollView, StyleSheet, Platform, Text, useColorScheme, View, StatusBar, ImageSourcePropType } from 'react-native';
 import React, { useState, useEffect, useRef } from 'react';
 import OtpInputs from 'react-native-otp-inputs';
 //navigation
@@ -6,6 +6,8 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack'
 import { RootStackParamList } from '../../routes/AuthStack';
 import { useAuthStore } from '../../store/AuthStore';
 import { SafeAreaView } from 'react-native';
+import PinImage from '../../../assets/images/pincode.png'
+import CustomImage from '../../components/CustomImage/CustomImage';
 
 type PinLogProps = NativeStackScreenProps<RootStackParamList, 'PinLoginScreen'>
 
@@ -18,6 +20,7 @@ const PinLoginScreen = ({navigation}: PinLogProps) => {
   const [error, setError] = useState("")
   const [life, setLife] = useState(3)
   const isDarkMode = useColorScheme() === 'dark';
+  const [pinImage, setPinImage ] = useState<ImageSourcePropType>(PinImage)
 
 
   const handleCodeChange = (code:any) => {
@@ -102,11 +105,7 @@ const PinLoginScreen = ({navigation}: PinLogProps) => {
       style={[styles.container, isDarkMode ? styles.containerDark : styles.containerLight]}
       >
         <View style={styles.phoneContainer}>
-          <Image
-            style={styles.phone}
-            source={require('../../../assets/images/pincode.png')}
-            resizeMode="contain"
-          />
+          <CustomImage img_style={styles.phone} imageUrl={pinImage}/>
         </View>
         <Text
           style={[styles.codeHeading, isDarkMode ? styles.codeHeadingDark : styles.codeHeadingLight]}
@@ -224,6 +223,7 @@ const styles = StyleSheet.create({
     width: '80%',
     maxWidth: 300,
     maxHeight: 170,
+    resizeMode: 'contain'
   },
   phoneContainer: {
     flex: 1,

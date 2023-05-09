@@ -1,17 +1,20 @@
-import { Image, ScrollView, StyleSheet, Text, useColorScheme, View } from 'react-native';
+import { Image, ImageSourcePropType, ScrollView, StyleSheet, Text, useColorScheme, View } from 'react-native';
 import React, { useState } from 'react';
 import OtpInputs from 'react-native-otp-inputs';
 import CustomButton from '../../components/CustomButton';
+import PhoneImage from '../../../assets/images/otp.png'
+
 //navigation
 import {NativeStackScreenProps, NativeStackNavigationProp} from '@react-navigation/native-stack'
 import { RootStackParamList } from '../../routes/AuthStack';
 import {useNavigation} from '@react-navigation/native'
+import CustomImage from '../../components/CustomImage/CustomImage';
 type OTPProps = NativeStackScreenProps<RootStackParamList, 'OtpScreen'>
 
 
 const OtpScreen = ({route}: OTPProps) => {
   const [otp, setOtp] = useState('');
-
+  const [phoneImage, setPhoneImage] = useState<ImageSourcePropType>(PhoneImage)
   const isDarkMode = useColorScheme() === 'dark';
   const { where } = route.params
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
@@ -45,11 +48,7 @@ const OtpScreen = ({route}: OTPProps) => {
       style={[styles.container, isDarkMode ? styles.containerDark : styles.containerLight]}
     >
       <View style={styles.phoneContainer}>
-        <Image
-          style={styles.phone}
-          source={require('../../../assets/images/otp.png')}
-          resizeMode="contain"
-        />
+        <CustomImage img_style={styles.phone} imageUrl={phoneImage}/>
       </View>
       <Text
         style={[styles.codeHeading, isDarkMode ? styles.codeHeadingDark : styles.codeHeadingLight]}
@@ -158,10 +157,12 @@ const styles = StyleSheet.create({
     width: '80%',
     maxWidth: 300,
     maxHeight: 170,
+    resizeMode: 'contain'
   },
   phoneContainer: {
     flex: 1,
     maxHeight: 160,
     alignItems: 'center',
+    marginTop: 20
   },
 });

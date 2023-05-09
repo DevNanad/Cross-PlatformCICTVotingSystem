@@ -1,17 +1,19 @@
-import { Image, ScrollView, StyleSheet, Text, TextInput, useColorScheme, View } from 'react-native';
+import { Image, ImageSourcePropType, ScrollView, StyleSheet, Text, TextInput, useColorScheme, View } from 'react-native';
 import React, { useState } from 'react';
 import CustomButton from '../../components/CustomButton';
+import ResetImage from '../../../assets/images/resetpass.png'
 
 //navigation
 import {NativeStackScreenProps} from '@react-navigation/native-stack'
 import { RootStackParamList } from '../../routes/AuthStack';
+import CustomImage from '../../components/CustomImage/CustomImage';
 type resetPasswordProps = NativeStackScreenProps<RootStackParamList, 'ResetPasswordScreen'>
 
 
 const ResetPasswordScreen = ({navigation}: resetPasswordProps) => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
-
+  const [resetImage, setResetImage] = useState<ImageSourcePropType>(ResetImage)
   const isDarkMode = useColorScheme() === 'dark';
 
   const onConfirmPressed = () => {
@@ -25,11 +27,7 @@ const ResetPasswordScreen = ({navigation}: resetPasswordProps) => {
       style={[styles.container, isDarkMode ? styles.containerDark : styles.containerLight]}
     >
       <View style={styles.phoneContainer}>
-        <Image
-          style={styles.phone}
-          source={require('../../../assets/images/resetpass.png')}
-          resizeMode="contain"
-        />
+        <CustomImage img_style={styles.phone} imageUrl={resetImage}/>
       </View>
       <Text
         style={[styles.codeHeading, isDarkMode ? styles.codeHeadingDark : styles.codeHeadingLight]}
@@ -106,11 +104,13 @@ const styles = StyleSheet.create({
     width: '80%',
     maxWidth: 300,
     maxHeight: 170,
+    resizeMode: 'contain'
   },
   phoneContainer: {
     flex: 1,
     maxHeight: 160,
     alignItems: 'center',
+    marginTop: 15
   },
   input: {
     color: '#1b1c27',

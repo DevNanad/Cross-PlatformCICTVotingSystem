@@ -1,15 +1,18 @@
-import { View, Text, Image, StyleSheet, ScrollView, useColorScheme } from 'react-native';
-import React from 'react';
+import { View, Text, Image, StyleSheet, ScrollView, useColorScheme, ImageSourcePropType, StatusBar } from 'react-native';
+import React, { useState } from 'react';
 import CustomButton from '../../../src/components/CustomButton';
+import LandingImage from '../../../assets/images/vote.png'
 
 //navigation
 import {NativeStackScreenProps} from '@react-navigation/native-stack'
 import { RootStackParamList } from '../../routes/AuthStack';
+import CustomImage from '../../components/CustomImage/CustomImage';
 
 type LandingProps = NativeStackScreenProps<RootStackParamList, 'LandingScreen'>
 
 const LandingScreen = ({navigation}: LandingProps) => {
   const isDarkMode = useColorScheme() === 'dark';
+  const [landing_img, setLanding_Img] = useState<ImageSourcePropType>(LandingImage)
 
   const onLoginInPressed = () => {
     navigation.navigate('ChooseLoginScreen')
@@ -22,12 +25,9 @@ const LandingScreen = ({navigation}: LandingProps) => {
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
+      <StatusBar translucent backgroundColor="transparent" />
       <View style={[styles.container, isDarkMode ? styles.containerDark : styles.containerLight]}>
-        <Image
-          style={styles.logo}
-          resizeMode="contain"
-          source={require('../../../assets/images/vote.png')}
-        />
+        <CustomImage img_style={styles.logo} imageUrl={landing_img}/>
         <View style={styles.greetings}>
           <Text style={[styles.heading, isDarkMode ? styles.headingDark : styles.headingLight]}>
             Welcome
@@ -87,6 +87,7 @@ const styles = StyleSheet.create({
     width: '90%',
     maxWidth: 300,
     maxHeight: 300,
+    resizeMode: 'contain'
   },
 });
 export default LandingScreen;
